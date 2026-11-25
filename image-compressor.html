@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Compress JPG, PNG and WebP images online for free. Adjust image quality, preview the result and download a smaller image. Files are processed in your browser.">
+  <link rel="canonical" href="https://toolnova-ajl.pages.dev/image-compressor.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Free Image Compressor Online | ToolNova">
+  <meta property="og:description" content="Compress JPG, PNG and WebP images online for free with ToolNova.">
+  <meta property="og:url" content="https://toolnova-ajl.pages.dev/image-compressor.html">
+  <meta property="og:site_name" content="ToolNova">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free Image Compressor Online | ToolNova">
+  <meta name="twitter:description" content="Compress images online for free. Fast browser-based image compression.">
+  <meta name="theme-color" content="#2563eb">
+  <title>Free Image Compressor Online | ToolNova</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .page-wrap{max-width:900px;margin:0 auto;padding:54px 22px 76px}
+    .page-intro{text-align:center;margin-bottom:30px}
+    .page-intro h1{font-size:clamp(32px,5vw,48px);letter-spacing:-1.8px;margin:12px 0}
+    .page-intro p{max-width:680px;margin:0 auto;color:var(--muted);font-size:15px;line-height:1.7}
+    .compress-panel{max-width:700px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:18px;padding:25px;box-shadow:0 12px 35px #1e3a8a0c}
+    .upload-area{border:2px dashed #bfd0e5;border-radius:13px;background:#f8fbff;padding:30px 18px;text-align:center}
+    .upload-area strong{display:block;margin-bottom:7px}
+    .upload-area p{font-size:12px;color:var(--muted);margin:0 0 14px}
+    .upload-area input{max-width:100%;font:12px "DM Sans"}
+    .compress-controls{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0}
+    .compress-controls label{display:block;font-size:12px;font-weight:700;color:#475569;margin-bottom:9px}
+    .compress-controls select,.compress-controls input[type=range]{width:100%}
+    .compress-controls select{padding:10px;border:1px solid #dce4ef;border-radius:9px;background:white;font:13px "DM Sans"}
+    .quality-line{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:#64748b}
+    .preview-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+    .preview-card{border:1px solid var(--line);border-radius:12px;padding:12px;min-width:0}
+    .preview-card h3{font-size:12px;margin:0 0 9px}
+    .preview-card img{display:block;width:100%;height:180px;object-fit:contain;background:#f8fafc;border-radius:8px}
+    .preview-meta{font-size:11px;color:#64748b;margin-top:8px;overflow-wrap:anywhere}
+    .page-copy{max-width:760px;margin:42px auto 0;color:#475569;font-size:14px;line-height:1.8}
+    .page-copy h2{color:var(--ink);font-size:22px;letter-spacing:-.5px;margin:28px 0 8px}
+    .page-copy h3{color:var(--ink);font-size:16px;margin:20px 0 5px}
+    .page-copy ul{padding-left:21px}
+    .notice{margin-top:14px;font-size:11px;color:#64748b;line-height:1.6}
+    @media(max-width:600px){.page-wrap{padding:40px 16px 55px}.compress-panel{padding:17px}.compress-controls,.preview-grid{grid-template-columns:1fr}.preview-card img{height:160px}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="ToolNova home"><span class="brand-mark">T</span><span>Tool<span class="brand-blue">Nova</span></span></a>
+    <nav><a href="index.html#tools">All tools</a><a href="index.html#about">About</a></nav>
+    <a class="header-cta" href="index.html#tools">Explore tools <span>↗</span></a>
+  </header>
+
+  <main class="page-wrap">
+    <section class="page-intro">
+      <div class="eyebrow">FREE ONLINE IMAGE TOOL</div>
+      <h1>Image Compressor</h1>
+      <p>Compress JPG, PNG and WebP images online for free. Choose an output format and image quality, then download the compressed image. Your image is processed in your browser.</p>
+    </section>
+
+    <section class="compress-panel" aria-label="Image compression tool">
+      <div class="upload-area">
+        <strong>Choose an image to compress</strong>
+        <p>Supported formats: JPG, PNG and WebP</p>
+        <input id="imageFile" type="file" accept="image/jpeg,image/png,image/webp">
+      </div>
+      <div class="compress-controls">
+        <div>
+          <label for="quality">Image quality</label>
+          <div class="quality-line"><span>Smaller file</span><strong id="qualityValue">75%</strong><span>Higher quality</span></div>
+          <input id="quality" type="range" min="10" max="100" value="75">
+        </div>
+        <div>
+          <label for="format">Output format</label>
+          <select id="format">
+            <option value="image/jpeg">JPG</option>
+            <option value="image/webp">WebP</option>
+            <option value="image/png">PNG (lossless)</option>
+          </select>
+        </div>
+      </div>
+      <button class="action-button" id="compressButton" type="button">Compress image</button>
+      <div id="status" class="notice" role="status" aria-live="polite">Select an image to get started. For JPG and WebP, lower quality settings usually create smaller files.</div>
+      <div class="preview-grid hidden" id="previewGrid">
+        <div class="preview-card">
+          <h3>Original image</h3>
+          <img id="originalPreview" alt="Original image preview">
+          <div class="preview-meta" id="originalInfo"></div>
+        </div>
+        <div class="preview-card">
+          <h3>Compressed image</h3>
+          <img id="compressedPreview" alt="Compressed image preview">
+          <div class="preview-meta" id="compressedInfo"></div>
+        </div>
+      </div>
+      <div class="button-row"><button class="secondary-button hidden" id="downloadButton" type="button">Download compressed image</button></div>
+      <p class="notice">Privacy: image processing happens locally in your browser. Your selected image is not uploaded to a ToolNova server. PNG is lossless, so its quality slider does not reduce file size in the same way as JPG or WebP.</p>
+    </section>
+
+    <article class="page-copy">
+      <h2>How to compress an image</h2>
+      <ol>
+        <li>Select a JPG, PNG or WebP image from your device.</li>
+        <li>Choose the output format you want.</li>
+        <li>Adjust the quality slider. Lower quality can produce a smaller JPG or WebP file.</li>
+        <li>Select <strong>Compress image</strong> to create the new image.</li>
+        <li>Preview the result and select the download button to save it.</li>
+      </ol>
+
+      <h2>Why use an image compressor?</h2>
+      <p>Large image files can take longer to upload, share or load on a webpage. Compressing an image can reduce its file size and make it easier to store or share. The amount of compression depends on the image, its format and the quality setting.</p>
+
+      <h2>Frequently asked questions</h2>
+      <h3>Is this image compressor free?</h3>
+      <p>Yes. You can use this ToolNova image compressor for free in your browser.</p>
+      <h3>Which image formats are supported?</h3>
+      <p>You can select JPG, PNG and WebP images. You can choose JPG, PNG or WebP as the output format.</p>
+      <h3>Are my images uploaded?</h3>
+      <p>No. This page uses your browser to process the selected image. The image is not sent to a ToolNova server.</p>
+      <h3>Why can a PNG file stay the same size or become larger?</h3>
+      <p>PNG uses lossless compression. Depending on the image, converting to PNG may not reduce file size. Try JPG or WebP if you want a smaller file and can accept lossy compression.</p>
+    </article>
+  </main>
+
+  <footer>
+    <a class="brand footer-brand" href="index.html"><span class="brand-mark">T</span><span>Tool<span class="brand-blue">Nova</span></span></a>
+    <span>© <span id="year"></span> ToolNova. Free tools for everyday tasks.</span>
+    <div class="footer-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Contact</a></div>
+  </footer>
+
+  <script>
+    const fileInput = document.getElementById("imageFile");
+    const qualityInput = document.getElementById("quality");
+    const formatInput = document.getElementById("format");
+    const statusBox = document.getElementById("status");
+    const previewGrid = document.getElementById("previewGrid");
+    const downloadButton = document.getElementById("downloadButton");
+    let selectedFile = null;
+    let originalUrl = null;
+    let compressedUrl = null;
+    let compressedBlob = null;
+    let outputName = "toolnova-compressed";
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    qualityInput.addEventListener("input", () => {
+      document.getElementById("qualityValue").textContent = qualityInput.value + "%";
+    });
+
+    fileInput.addEventListener("change", () => {
+      selectedFile = fileInput.files && fileInput.files[0] ? fileInput.files[0] : null;
+      clearOutput();
+      if (!selectedFile) {
+        statusBox.textContent = "Select an image to get started.";
+        return;
+      }
+      if (!["image/jpeg", "image/png", "image/webp"].includes(selectedFile.type)) {
+        selectedFile = null;
+        fileInput.value = "";
+        statusBox.textContent = "Please choose a JPG, PNG or WebP image.";
+        return;
+      }
+      if (originalUrl) URL.revokeObjectURL(originalUrl);
+      originalUrl = URL.createObjectURL(selectedFile);
+      document.getElementById("originalPreview").src = originalUrl;
+      document.getElementById("originalInfo").textContent =
+        selectedFile.name + " · " + formatBytes(selectedFile.size);
+      previewGrid.classList.remove("hidden");
+      statusBox.textContent = "Image selected. Adjust the settings and select Compress image.";
+    });
+
+    document.getElementById("compressButton").addEventListener("click", () => {
+      if (!selectedFile) {
+        statusBox.textContent = "Please choose an image first.";
+        return;
+      }
+      const image = new Image();
+      image.onload = () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = image.naturalWidth;
+        canvas.height = image.naturalHeight;
+        const context = canvas.getContext("2d");
+        if (!context) {
+          statusBox.textContent = "Your browser could not process this image.";
+          return;
+        }
+        context.drawImage(image, 0, 0);
+        const type = formatInput.value;
+        const quality = Number(qualityInput.value) / 100;
+        canvas.toBlob(blob => {
+          if (!blob) {
+            statusBox.textContent = "Could not create this image. Please try another format.";
+            return;
+          }
+          if (compressedUrl) URL.revokeObjectURL(compressedUrl);
+          compressedBlob = blob;
+          compressedUrl = URL.createObjectURL(blob);
+          outputName = "toolnova-compressed." + ({ "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp" }[type]);
+          document.getElementById("compressedPreview").src = compressedUrl;
+          const difference = selectedFile.size > 0
+            ? ((1 - blob.size / selectedFile.size) * 100)
+            : 0;
+          const resultText = blob.size <= selectedFile.size
+            ? "File size reduced by " + Math.max(0, difference).toFixed(1) + "%."
+            : "The output is larger than the original. Try another format or quality setting.";
+          document.getElementById("compressedInfo").textContent =
+            formatBytes(blob.size) + " · " + resultText;
+          previewGrid.classList.remove("hidden");
+          downloadButton.classList.remove("hidden");
+          statusBox.textContent = "Compression complete. Preview the result, then download it.";
+        }, type, type === "image/png" ? undefined : quality);
+      };
+      image.onerror = () => {
+        statusBox.textContent = "This image could not be opened. Please try another file.";
+      };
+      image.src = URL.createObjectURL(selectedFile);
+    });
+
+    downloadButton.addEventListener("click", () => {
+      if (!compressedBlob) return;
+      const url = URL.createObjectURL(compressedBlob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = outputName;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    });
+
+    function clearOutput() {
+      if (compressedUrl) URL.revokeObjectURL(compressedUrl);
+      compressedUrl = null;
+      compressedBlob = null;
+      previewGrid.classList.add("hidden");
+      downloadButton.classList.add("hidden");
+      document.getElementById("compressedPreview").removeAttribute("src");
+      document.getElementById("compressedInfo").textContent = "";
+    }
+
+    function formatBytes(bytes) {
+      if (bytes < 1024) return bytes + " B";
+      if (bytes < 1048576) return (bytes / 1024).toFixed(1) + " KB";
+      return (bytes / 1048576).toFixed(2) + " MB";
+    }
+  </script>
+</body>
+</html>
