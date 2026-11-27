@@ -78,11 +78,11 @@
       <div class="resize-controls">
         <div class="dimension-field">
           <label for="width">Width (pixels)</label>
-          <input id="width" type="number" min="1" max="12000" step="1" placeholder="e.g. 1200" disabled>
+          <input id="width" type="number" min="1" max="8192" step="1" placeholder="e.g. 1200" disabled>
         </div>
         <div class="dimension-field">
           <label for="height">Height (pixels)</label>
-          <input id="height" type="number" min="1" max="12000" step="1" placeholder="e.g. 800" disabled>
+          <input id="height" type="number" min="1" max="8192" step="1" placeholder="e.g. 800" disabled>
         </div>
         <div class="dimension-field">
           <label for="format">Output format</label>
@@ -204,7 +204,14 @@
       document.getElementById("qualityValue").textContent = qualityInput.value + "%";
     }
 
+    function updateFormatControls() {
+      const isPng = formatInput.value === "image/png";
+      qualityInput.disabled = !selectedFile || isPng;
+      document.getElementById("qualityValue").textContent = isPng ? "Not used for PNG" : qualityInput.value + "%";
+    }
+
     qualityInput.addEventListener("input", updateQualityLabel);
+    formatInput.addEventListener("change", updateFormatControls);
 
     widthInput.addEventListener("input", () => {
       if (!selectedFile || !keepRatioInput.checked || !originalWidth) return;
@@ -221,6 +228,13 @@
     fileInput.addEventListener("change", () => {
       selectedFile = fileInput.files && fileInput.files[0] ? fileInput.files[0] : null;
       clearOutput();
+      if (originalUrl) URL.revokeObjectURL(originalUrl);
+      originalUrl = null;
+      originalWidth = 0;
+      originalHeight = 0;
+      document.getElementById("originalPreview").removeAttribute("src");
+      document.getElementById("originalInfo").textContent = "";
+      previewGrid.classList.add("hidden");
 
       if (!selectedFile) {
         setControlsEnabled(false);
@@ -251,6 +265,7 @@
           formatBytes(selectedFile.size) + " · " + selectedFile.name;
         previewGrid.classList.remove("hidden");
         setControlsEnabled(true);
+        updateFormatControls();
         statusBox.textContent = "Image selected. Enter your desired dimensions and select Resize image.";
       };
       image.onerror = () => {
@@ -278,8 +293,9 @@
 
       if (!Number.isInteger(targetWidth) || !Number.isInteger(targetHeight) ||
           targetWidth < 1 || targetHeight < 1 ||
-          targetWidth > 12000 || targetHeight > 12000) {
-        statusBox.textContent = "Enter a whole-number width and height between 1 and 12,000 pixels.";
+          targetWidth > 8192 || targetHeight > 8192 ||
+          targetWidth * targetHeight > 40000000) {
+        statusBox.textContent = "Enter dimensions up to 8,192 pixels per side, with no more than 40 million total pixels.";
         return;
       }
 
@@ -295,6 +311,10 @@
 
       context.imageSmoothingEnabled = true;
       context.imageSmoothingQuality = "high";
+      if (formatInput.value === "image/jpeg") {
+        context.fillStyle = "#ffffff";
+        context.fillRect(0, 0, targetWidth, targetHeight);
+      }
 
       const image = new Image();
       image.onload = () => {
