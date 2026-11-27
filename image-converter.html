@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Convert JPG, PNG and WebP images online for free with ToolNova. Preview converted images, adjust quality and download privately with browser-based image conversion.">
+  <link rel="canonical" href="https://toolnova-ajl.pages.dev/image-converter.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Free Image Converter Online | ToolNova">
+  <meta property="og:description" content="Convert JPG, PNG and WebP images online for free. Choose an output format, preview the result and download privately in your browser.">
+  <meta property="og:url" content="https://toolnova-ajl.pages.dev/image-converter.html">
+  <meta property="og:site_name" content="ToolNova">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free Image Converter Online | ToolNova">
+  <meta name="twitter:description" content="Convert JPG, PNG and WebP images online for free with private browser-based processing.">
+  <meta name="theme-color" content="#2563eb">
+  <title>Free Image Converter Online | ToolNova</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "ToolNova Image Converter",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "description": "A free browser-based tool to convert JPG, PNG and WebP images without uploading them to a ToolNova server."
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolnova-ajl.pages.dev/" },
+      { "@type": "ListItem", "position": 2, "name": "Image Converter", "item": "https://toolnova-ajl.pages.dev/image-converter.html" }
+    ]
+  }
+  </script>
+  <style>
+    .page-wrap{max-width:900px;margin:0 auto;padding:54px 22px 76px}
+    .breadcrumb{font-size:12px;color:var(--muted);margin:0 0 18px}
+    .breadcrumb a{color:#2563eb;text-decoration:none}
+    .page-intro{text-align:center;margin-bottom:30px}
+    .page-intro h1{font-size:clamp(32px,5vw,48px);letter-spacing:-1.8px;margin:12px 0}
+    .page-intro p{max-width:680px;margin:0 auto;color:var(--muted);font-size:15px;line-height:1.7}
+    .converter-panel{max-width:700px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:18px;padding:25px;box-shadow:0 12px 35px #1e3a8a0c}
+    .upload-area{border:2px dashed #bfd0e5;border-radius:13px;background:#f8fbff;padding:30px 18px;text-align:center}
+    .upload-area strong{display:block;margin-bottom:7px}
+    .upload-area p{font-size:12px;color:var(--muted);margin:0 0 14px}
+    .upload-area input{max-width:100%;font:12px "DM Sans"}
+    .converter-controls{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0}
+    .converter-controls label{display:block;font-size:12px;font-weight:700;color:#475569;margin-bottom:9px}
+    .converter-controls select{box-sizing:border-box;width:100%;padding:10px;border:1px solid #dce4ef;border-radius:9px;background:white;font:13px "DM Sans"}
+    .converter-controls input[type=range]{width:100%}
+    .quality-line{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:#64748b;margin-bottom:8px}
+    .preview-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+    .preview-card{border:1px solid var(--line);border-radius:12px;padding:12px;min-width:0}
+    .preview-card h3{font-size:12px;margin:0 0 9px}
+    .preview-card img{display:block;width:100%;height:180px;object-fit:contain;background:#f8fafc;border-radius:8px}
+    .preview-meta{font-size:11px;color:#64748b;margin-top:8px;overflow-wrap:anywhere}
+    .page-copy{max-width:760px;margin:42px auto 0;color:#475569;font-size:14px;line-height:1.8}
+    .page-copy h2{color:var(--ink);font-size:22px;letter-spacing:-.5px;margin:28px 0 8px}
+    .page-copy h3{color:var(--ink);font-size:16px;margin:20px 0 5px}
+    .page-copy ul,.page-copy ol{padding-left:21px}
+    .page-copy a{color:#2563eb}
+    .page-copy table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px}
+    .page-copy th,.page-copy td{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}
+    .page-copy th{color:var(--ink);background:#f8fafc}
+    .notice{margin-top:14px;font-size:11px;color:#64748b;line-height:1.6}
+    .button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .tool-status-error{color:#b42318}
+    .tool-status-success{color:#167647}
+    .converter-controls select:disabled,.converter-controls input:disabled{opacity:.65}
+    @media(max-width:600px){.page-wrap{padding:40px 16px 55px}.converter-panel{padding:17px}.converter-controls,.preview-grid{grid-template-columns:1fr}.preview-card img{height:160px}.page-copy table{font-size:12px}.page-copy th,.page-copy td{padding:7px}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="ToolNova home"><span class="brand-mark">T</span><span>Tool<span class="brand-blue">Nova</span></span></a>
+    <nav><a href="index.html#tools">All tools</a><a href="index.html#about">About</a></nav>
+    <a class="header-cta" href="index.html#tools">Explore tools <span>↗</span></a>
+  </header>
+
+  <main class="page-wrap">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Image Converter</div>
+    <section class="page-intro">
+      <div class="eyebrow">FREE ONLINE IMAGE TOOL</div>
+      <h1>Image Converter</h1>
+      <p>Convert JPG, PNG and WebP images online for free. Choose your preferred output format, adjust image quality when supported, preview the converted image and download it. Your image is processed locally in your browser.</p>
+    </section>
+
+    <section class="converter-panel" aria-label="Image conversion tool">
+      <div class="upload-area">
+        <strong>Choose an image to convert</strong>
+        <p>Supported formats: JPG, PNG and WebP · Maximum file size: 50 MB</p>
+        <input id="imageFile" type="file" accept="image/jpeg,image/png,image/webp" aria-label="Choose a JPG, PNG or WebP image">
+      </div>
+
+      <div class="converter-controls">
+        <div>
+          <label for="outputFormat">Output format</label>
+          <select id="outputFormat" disabled>
+            <option value="image/jpeg">JPG</option>
+            <option value="image/png">PNG</option>
+            <option value="image/webp">WebP</option>
+          </select>
+        </div>
+        <div>
+          <label for="quality">Image quality</label>
+          <div class="quality-line"><span>Smaller file</span><strong id="qualityValue">85%</strong><span>Higher quality</span></div>
+          <input id="quality" type="range" min="10" max="100" value="85" disabled>
+        </div>
+      </div>
+
+      <button class="action-button" id="convertButton" type="button" disabled>Convert image</button>
+      <div id="status" class="notice" role="status" aria-live="polite">Select an image to get started. Choose JPG, PNG or WebP as your output format.</div>
+
+      <div class="preview-grid hidden" id="previewGrid">
+        <div class="preview-card" id="originalCard">
+          <h3>Original image</h3>
+          <img id="originalPreview" alt="Preview of the original image">
+          <div class="preview-meta" id="originalInfo"></div>
+        </div>
+        <div class="preview-card hidden" id="resultCard">
+          <h3>Converted image</h3>
+          <img id="convertedPreview" alt="Preview of the converted image">
+          <div class="preview-meta" id="convertedInfo"></div>
+        </div>
+      </div>
+      <div class="button-row">
+        <button class="secondary-button hidden" id="downloadButton" type="button">Download converted image</button>
+      </div>
+      <p class="notice">Privacy: image conversion happens locally in your browser. Your selected image is not uploaded to a ToolNova server. JPG does not support transparency, so transparent areas are filled with white when converting to JPG. PNG uses lossless encoding; its quality slider is not used.</p>
+    </section>
+
+    <article class="page-copy">
+      <h2>How to convert an image online</h2>
+      <ol>
+        <li>Select a JPG, PNG or WebP image from your device.</li>
+        <li>Choose JPG, PNG or WebP as the output format.</li>
+        <li>Adjust the quality setting for JPG or WebP if needed. PNG is exported without a lossy quality setting.</li>
+        <li>Select <strong>Convert image</strong> to process the image in your browser.</li>
+        <li>Check the original and converted previews, then select the download button.</li>
+      </ol>
+
+      <h2>JPG vs PNG vs WebP: which format should you use?</h2>
+      <p>Each image format has different strengths. Choose the format that best suits the image and where you plan to use it.</p>
+      <table>
+        <thead><tr><th>Format</th><th>Common uses</th><th>Key features</th></tr></thead>
+        <tbody>
+          <tr><td><strong>JPG</strong></td><td>Photographs and everyday images</td><td>Lossy compression; does not support transparency.</td></tr>
+          <tr><td><strong>PNG</strong></td><td>Screenshots, graphics and transparent images</td><td>Lossless encoding and transparency support; files can be larger.</td></tr>
+          <tr><td><strong>WebP</strong></td><td>Website images and many photographic or graphic images</td><td>Supports lossy and lossless encoding, including transparency.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>What does image quality mean?</h2>
+      <p>For JPG and WebP, the quality setting controls the balance between image detail and output file size. A lower quality setting often creates a smaller file, while a higher setting usually preserves more visual detail. The result depends on the original image, so preview the converted file before downloading.</p>
+      <p>PNG is a lossless format. Its output does not use the same lossy quality adjustment as JPG or WebP, so the quality slider is disabled when PNG is selected.</p>
+
+      <h2>Why convert an image?</h2>
+      <ul>
+        <li><strong>Compatibility:</strong> choose a format supported by the website, app or document you are using.</li>
+        <li><strong>Transparency:</strong> use PNG or WebP when you need a format that supports transparent areas.</li>
+        <li><strong>Web use:</strong> WebP can be a useful choice for modern websites.</li>
+        <li><strong>Local processing:</strong> convert images in your browser without sending them to a ToolNova processing server.</li>
+      </ul>
+
+      <h2>Frequently asked questions</h2>
+      <h3>Is this image converter free?</h3>
+      <p>Yes. ToolNova's image converter is free to use in your browser.</p>
+      <h3>Which image formats can I convert?</h3>
+      <p>You can upload JPG, PNG and WebP images and convert them to JPG, PNG or WebP.</p>
+      <h3>Are my images uploaded to a server?</h3>
+      <p>No. The conversion is performed locally in your browser. The selected image is not uploaded to a ToolNova server by this tool.</p>
+      <h3>Will a transparent PNG stay transparent if I convert it to JPG?</h3>
+      <p>No. JPG does not support transparency. Transparent areas are filled with white in the JPG output. Choose PNG or WebP if you need to preserve transparency.</p>
+      <h3>Does PNG use the quality slider?</h3>
+      <p>No. PNG uses lossless encoding, so the quality slider is disabled when PNG is selected.</p>
+      <h3>Will the converted image always be smaller?</h3>
+      <p>No. Conversion changes the image format and encoding, not necessarily its dimensions or file size. Depending on the source image and output format, the converted file may be larger or smaller.</p>
+      <h3>Is there a file size limit?</h3>
+      <p>The tool accepts files up to 50 MB and checks image dimensions before processing. Very large images may still be limited by the memory available in your browser or device.</p>
+      <h3>What is the difference between converting, compressing and resizing?</h3>
+      <p>Converting changes the image file format, compressing focuses on reducing file size, and resizing changes pixel dimensions. You can also use the <a href="image-compressor.html">Image Compressor</a> or <a href="image-resizer.html">Image Resizer</a> for those specific tasks.</p>
+    </article>
+  </main>
+
+  <footer>
+    <a class="brand footer-brand" href="index.html"><span class="brand-mark">T</span><span>Tool<span class="brand-blue">Nova</span></span></a>
+    <span>© <span id="year"></span> ToolNova. Free tools for everyday tasks.</span>
+    <div class="footer-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Contact</a></div>
+  </footer>
+
+  <script>
+    "use strict";
+
+    const fileInput = document.getElementById("imageFile");
+    const formatInput = document.getElementById("outputFormat");
+    const qualityInput = document.getElementById("quality");
+    const qualityValue = document.getElementById("qualityValue");
+    const convertButton = document.getElementById("convertButton");
+    const downloadButton = document.getElementById("downloadButton");
+    const statusBox = document.getElementById("status");
+    const previewGrid = document.getElementById("previewGrid");
+    const originalCard = document.getElementById("originalCard");
+    const resultCard = document.getElementById("resultCard");
+    const originalPreview = document.getElementById("originalPreview");
+    const originalInfo = document.getElementById("originalInfo");
+    const convertedPreview = document.getElementById("convertedPreview");
+    const convertedInfo = document.getElementById("convertedInfo");
+
+    const requiredElements = [
+      fileInput, formatInput, qualityInput, qualityValue, convertButton,
+      downloadButton, statusBox, previewGrid, originalCard, resultCard,
+      originalPreview, originalInfo, convertedPreview, convertedInfo
+    ];
+
+    if (requiredElements.some(element => !element)) {
+      console.error("ToolNova Image Converter: A required HTML element is missing.");
+    } else {
+      const MAX_FILE_BYTES = 50 * 1024 * 1024;
+      const MAX_PIXELS = 50000000;
+      let selectedFile = null;
+      let imageElement = null;
+      let originalUrl = null;
+      let convertedUrl = null;
+      let convertedBlob = null;
+      let outputName = "toolnova-converted.png";
+      let imageLoadVersion = 0;
+      let conversionVersion = 0;
+
+      const yearElement = document.getElementById("year");
+      if (yearElement) yearElement.textContent = new Date().getFullYear();
+
+      function setStatus(message, type) {
+        statusBox.textContent = message;
+        statusBox.classList.remove("tool-status-error", "tool-status-success");
+        if (type === "error") statusBox.classList.add("tool-status-error");
+        if (type === "success") statusBox.classList.add("tool-status-success");
+      }
+
+      function formatBytes(bytes) {
+        if (!Number.isFinite(bytes) || bytes < 0) return "Unknown size";
+        if (bytes < 1024) return bytes + " B";
+        if (bytes < 1048576) return (bytes / 1024).toFixed(1) + " KB";
+        return (bytes / 1048576).toFixed(2) + " MB";
+      }
+
+      function getExtension(type) {
+        return { "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp" }[type] || "png";
+      }
+
+      function clearConvertedOutput() {
+        conversionVersion++;
+        if (convertedUrl) URL.revokeObjectURL(convertedUrl);
+        convertedUrl = null;
+        convertedBlob = null;
+        convertedPreview.removeAttribute("src");
+        convertedInfo.textContent = "";
+        resultCard.classList.add("hidden");
+        downloadButton.classList.add("hidden");
+      }
+
+      function clearOriginal() {
+        if (originalUrl) URL.revokeObjectURL(originalUrl);
+        originalUrl = null;
+        originalPreview.removeAttribute("src");
+        originalInfo.textContent = "";
+        originalCard.classList.add("hidden");
+      }
+
+      function setControlsEnabled(enabled) {
+        formatInput.disabled = !enabled;
+        qualityInput.disabled = !enabled || formatInput.value === "image/png";
+        convertButton.disabled = !enabled;
+      }
+
+      function updateQualityControl() {
+        const isPng = formatInput.value === "image/png";
+        qualityInput.disabled = !selectedFile || isPng;
+        qualityValue.textContent = isPng ? "Not used for PNG" : qualityInput.value + "%";
+      }
+
+      function resetTool() {
+        imageLoadVersion++;
+        clearConvertedOutput();
+        clearOriginal();
+        selectedFile = null;
+        imageElement = null;
+        setControlsEnabled(false);
+      }
+
+      function loadImage(file, version) {
+        return new Promise((resolve, reject) => {
+          const url = URL.createObjectURL(file);
+          const image = new Image();
+          image.onload = () => {
+            URL.revokeObjectURL(url);
+            if (version !== imageLoadVersion) {
+              reject(new Error("Image selection changed."));
+              return;
+            }
+            resolve(image);
+          };
+          image.onerror = () => {
+            URL.revokeObjectURL(url);
+            reject(new Error("This image could not be opened. Please choose another file."));
+          };
+          image.src = url;
+        });
+      }
+
+      formatInput.addEventListener("change", () => {
+        clearConvertedOutput();
+        updateQualityControl();
+        setStatus("Output format changed. Select Convert image to create the new file.");
+      });
+
+      qualityInput.addEventListener("input", () => {
+        qualityValue.textContent = qualityInput.value + "%";
+        clearConvertedOutput();
+        setStatus("Quality changed. Convert the image again to apply the new setting.");
+      });
+
+      fileInput.addEventListener("change", async () => {
+        resetTool();
+        const file = fileInput.files && fileInput.files[0] ? fileInput.files[0] : null;
+        if (!file) {
+          setStatus("Select an image to get started.");
+          return;
+        }
+        if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
+          fileInput.value = "";
+          setStatus("Please choose a JPG, PNG or WebP image.", "error");
+          return;
+        }
+        if (file.size > MAX_FILE_BYTES) {
+          fileInput.value = "";
+          setStatus("This image is larger than 50 MB. Please choose a smaller file.", "error");
+          return;
+        }
+
+        selectedFile = file;
+        const currentVersion = imageLoadVersion;
+        setStatus("Loading image. Please wait...");
+
+        try {
+          const image = await loadImage(file, currentVersion);
+          if (currentVersion !== imageLoadVersion || selectedFile !== file) return;
+          const width = image.naturalWidth;
+          const height = image.naturalHeight;
+          if (!width || !height || width > MAX_PIXELS / height) {
+            selectedFile = null;
+            fileInput.value = "";
+            setControlsEnabled(false);
+            setStatus("This image is too large to process safely in your browser. Choose an image with 50 megapixels or fewer.", "error");
+            return;
+          }
+
+          imageElement = image;
+          originalUrl = URL.createObjectURL(file);
+          originalPreview.src = originalUrl;
+          originalInfo.textContent = `${width} × ${height} px · ${formatBytes(file.size)} · ${file.name}`;
+          originalCard.classList.remove("hidden");
+          previewGrid.classList.remove("hidden");
+          setControlsEnabled(true);
+          updateQualityControl();
+          setStatus(`Image ready: ${width} × ${height} pixels. Choose an output format and select Convert image.`);
+        } catch (error) {
+          if (currentVersion !== imageLoadVersion) return;
+          selectedFile = null;
+          imageElement = null;
+          fileInput.value = "";
+          setControlsEnabled(false);
+          setStatus(error.message || "This image could not be opened. Please choose another file.", "error");
+        }
+      });
+
+      convertButton.addEventListener("click", () => {
+        if (!imageElement || !selectedFile) {
+          setStatus("Please choose an image first.", "error");
+          return;
+        }
+
+        clearConvertedOutput();
+        const currentImage = imageElement;
+        const currentFile = selectedFile;
+        const currentVersion = conversionVersion;
+        const type = formatInput.value;
+        const quality = Number(qualityInput.value) / 100;
+        const canvas = document.createElement("canvas");
+        canvas.width = currentImage.naturalWidth;
+        canvas.height = currentImage.naturalHeight;
+        const context = canvas.getContext("2d");
+
+        if (!context) {
+          setStatus("Your browser could not process this image.", "error");
+          return;
+        }
+
+        try {
+          if (type === "image/jpeg") {
+            context.fillStyle = "#ffffff";
+            context.fillRect(0, 0, canvas.width, canvas.height);
+          }
+          context.drawImage(currentImage, 0, 0);
+        } catch (error) {
+          setStatus("Could not process this image. Please try another file.", "error");
+          canvas.width = 0;
+          canvas.height = 0;
+          return;
+        }
+
+        convertButton.disabled = true;
+        setStatus("Converting image. Please wait...");
+
+        try {
+          canvas.toBlob(blob => {
+            canvas.width = 0;
+            canvas.height = 0;
+            if (currentVersion !== conversionVersion || currentFile !== selectedFile || currentImage !== imageElement) return;
+            convertButton.disabled = false;
+
+            if (!blob) {
+              setStatus("Could not create the converted image. Please try another format.", "error");
+              return;
+            }
+            if (blob.type !== type) {
+              setStatus("Your browser does not support this output format. Please choose another format.", "error");
+              return;
+            }
+
+            convertedBlob = blob;
+            convertedUrl = URL.createObjectURL(blob);
+            const baseName = currentFile.name.replace(/\.[^.]+$/, "") || "image";
+            outputName = `${baseName}-converted.${getExtension(type)}`;
+            convertedPreview.src = convertedUrl;
+            convertedInfo.textContent = `${currentImage.naturalWidth} × ${currentImage.naturalHeight} px · ${formatBytes(blob.size)} · ${outputName}`;
+            resultCard.classList.remove("hidden");
+            previewGrid.classList.remove("hidden");
+            downloadButton.classList.remove("hidden");
+            setStatus("Conversion complete. Preview the result, then download your image.", "success");
+          }, type, type === "image/png" ? undefined : quality);
+        } catch (error) {
+          canvas.width = 0;
+          canvas.height = 0;
+          convertButton.disabled = false;
+          setStatus("An error occurred during conversion. Please try again.", "error");
+        }
+      });
+
+      downloadButton.addEventListener("click", () => {
+        if (!convertedBlob || !convertedUrl) {
+          setStatus("Please convert an image first.", "error");
+          return;
+        }
+        const link = document.createElement("a");
+        link.href = convertedUrl;
+        link.download = outputName;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+      });
+
+      window.addEventListener("pagehide", () => {
+        if (originalUrl) URL.revokeObjectURL(originalUrl);
+        if (convertedUrl) URL.revokeObjectURL(convertedUrl);
+      });
+    }
+  </script>
+</body>
+</html>
