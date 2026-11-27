@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Resize JPG, PNG and WebP images online for free. Set custom dimensions, preserve aspect ratio, preview results and download images in your browser.">
+  <link rel="canonical" href="https://toolnova-ajl.pages.dev/image-resizer.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Free Image Resizer Online | ToolNova">
+  <meta property="og:description" content="Resize JPG, PNG and WebP images online for free with custom dimensions and browser-based processing.">
+  <meta property="og:url" content="https://toolnova-ajl.pages.dev/image-resizer.html">
+  <meta property="og:site_name" content="ToolNova">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free Image Resizer Online | ToolNova">
+  <meta name="twitter:description" content="Resize images online for free. Set custom dimensions and download your resized image.">
+  <meta name="theme-color" content="#2563eb">
+  <title>Free Image Resizer Online | ToolNova</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "ToolNova Free Image Resizer",
+        "url": "https://toolnova-ajl.pages.dev/image-resizer.html",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Any",
+        "description": "Resize JPG, PNG and WebP images online for free. Set custom dimensions, preserve the aspect ratio, preview the result and download it. Images are processed locally in your browser.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://toolnova-ajl.pages.dev/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Image Resizer",
+            "item": "https://toolnova-ajl.pages.dev/image-resizer.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .page-wrap{max-width:900px;margin:0 auto;padding:54px 22px 76px}
+    .breadcrumb{max-width:760px;margin:0 auto 22px;font-size:13px;color:var(--muted)}
+    .breadcrumb a{color:#2563eb;text-decoration:none}
+    .breadcrumb a:hover{text-decoration:underline}
+    .page-intro{text-align:center;margin-bottom:30px}
+    .page-intro h1{font-size:clamp(32px,5vw,48px);letter-spacing:-1.8px;margin:12px 0}
+    .page-intro p{max-width:680px;margin:0 auto;color:var(--muted);font-size:15px;line-height:1.7}
+    .resize-panel{max-width:700px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:18px;padding:25px;box-shadow:0 12px 35px #1e3a8a0c}
+    .upload-area{border:2px dashed #bfd0e5;border-radius:13px;background:#f8fbff;padding:30px 18px;text-align:center}
+    .upload-area strong{display:block;margin-bottom:7px}
+    .upload-area p{font-size:12px;color:var(--muted);margin:0 0 14px}
+    .upload-area input{max-width:100%;font:12px "DM Sans"}
+    .resize-controls{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0}
+    .resize-controls label{display:block;font-size:12px;font-weight:700;color:#475569;margin-bottom:8px}
+    .resize-controls input[type=number],.resize-controls select{box-sizing:border-box;width:100%;padding:10px;border:1px solid #dce4ef;border-radius:9px;background:#fff;font:13px "DM Sans"}
+    .dimension-field{min-width:0}
+    .dimension-row{display:flex;align-items:center;gap:9px}
+    .dimension-row input{min-width:0}
+    .ratio-option{display:flex;align-items:center;gap:8px;margin:0 0 18px;font-size:13px;color:#475569}
+    .ratio-option input{accent-color:#2563eb}
+    .quality-wrap{margin:8px 0 20px}
+    .quality-line{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:#64748b;margin-bottom:8px}
+    .quality-wrap input{width:100%}
+    .preview-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+    .preview-card{border:1px solid var(--line);border-radius:12px;padding:12px;min-width:0}
+    .preview-card h3{font-size:12px;margin:0 0 9px}
+    .preview-card img{display:block;width:100%;height:180px;object-fit:contain;background:#f8fafc;border-radius:8px}
+    .preview-meta{font-size:11px;color:#64748b;margin-top:8px;overflow-wrap:anywhere}
+    .page-copy{max-width:760px;margin:42px auto 0;color:#475569;font-size:14px;line-height:1.8}
+    .page-copy h2{color:var(--ink);font-size:22px;letter-spacing:-.5px;margin:28px 0 8px}
+    .page-copy h3{color:var(--ink);font-size:16px;margin:20px 0 5px}
+    .page-copy ul,.page-copy ol{padding-left:21px}
+    .notice{margin-top:14px;font-size:11px;color:#64748b;line-height:1.6}
+    .button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    @media(max-width:600px){.page-wrap{padding:40px 16px 55px}.resize-panel{padding:17px}.resize-controls,.preview-grid{grid-template-columns:1fr}.preview-card img{height:160px}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="ToolNova home"><span class="brand-mark">T</span><span>Tool<span class="brand-blue">Nova</span></span></a>
+    <nav><a href="index.html#tools">All tools</a><a href="index.html#about">About</a></nav>
+    <a class="header-cta" href="index.html#tools">Explore tools <span>↗</span></a>
+  </header>
+
+  <main class="page-wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a> <span aria-hidden="true">/</span> <span>Image Resizer</span>
+    </nav>
+    <section class="page-intro">
+      <div class="eyebrow">FREE ONLINE IMAGE TOOL</div>
+      <h1>Image Resizer</h1>
+      <p>Resize JPG, PNG and WebP images online for free. Enter your preferred width and height, keep the original proportions if you want, preview the result and download your resized image. Your image is processed in your browser.</p>
+    </section>
+
+    <section class="resize-panel" aria-label="Image resizing tool">
+      <div class="upload-area">
+        <strong>Choose an image to resize</strong>
+        <p>Supported formats: JPG, PNG and WebP</p>
+        <input id="imageFile" type="file" accept="image/jpeg,image/png,image/webp">
+      </div>
+
+      <div class="resize-controls">
+        <div class="dimension-field">
+          <label for="width">Width (pixels)</label>
+          <input id="width" type="number" min="1" max="8192" step="1" placeholder="e.g. 1200" disabled>
+        </div>
+        <div class="dimension-field">
+          <label for="height">Height (pixels)</label>
+          <input id="height" type="number" min="1" max="8192" step="1" placeholder="e.g. 800" disabled>
+        </div>
+        <div class="dimension-field">
+          <label for="format">Output format</label>
+          <select id="format" disabled>
+            <option value="image/jpeg">JPG</option>
+            <option value="image/png">PNG</option>
+            <option value="image/webp">WebP</option>
+          </select>
+        </div>
+        <div class="dimension-field">
+          <label for="quality">Image quality</label>
+          <div class="quality-line"><span>Smaller file</span><strong id="qualityValue">85%</strong><span>Higher quality</span></div>
+          <input id="quality" type="range" min="10" max="100" value="85" disabled>
+        </div>
+      </div>
+
+      <label class="ratio-option"><input id="keepRatio" type="checkbox" checked disabled> Keep original aspect ratio</label>
+      <button class="action-button" id="resizeButton" type="button" disabled>Resize image</button>
+      <div id="status" class="notice" role="status" aria-live="polite">Select an image to get started. You can enter custom dimensions after choosing a file.</div>
+
+      <div class="preview-grid hidden" id="previewGrid">
+        <div class="preview-card">
+          <h3>Original image</h3>
+          <img id="originalPreview" alt="Original image preview">
+          <div class="preview-meta" id="originalInfo"></div>
+        </div>
+        <div class="preview-card">
+          <h3>Resized image</h3>
+          <img id="resizedPreview" alt="Resized image preview">
+          <div class="preview-meta" id="resizedInfo"></div>
+        </div>
+      </div>
+      <div class="button-row">
+        <button class="secondary-button hidden" id="downloadButton" type="button">Download resized image</button>
+      </div>
+      <p class="notice">Privacy: image resizing happens locally in your browser. Your selected image is not uploaded to a ToolNova server. JPG and WebP quality settings may affect image detail; PNG is exported without a lossy quality setting.</p>
+    </section>
+
+    <article class="page-copy">
+      <h2>How to resize an image</h2>
+      <ol>
+        <li>Select a JPG, PNG or WebP image from your device.</li>
+        <li>Enter the new width and height in pixels.</li>
+        <li>Keep the aspect ratio option selected to preserve the image's original proportions. Turn it off to set width and height independently.</li>
+        <li>Choose an output format and adjust quality for JPG or WebP if needed.</li>
+        <li>Select <strong>Resize image</strong>, preview the result and download your resized image.</li>
+      </ol>
+
+      <h2>Why resize an image?</h2>
+      <p>Resizing changes an image's pixel dimensions. A smaller image can be more suitable for a website, online form, document or social media post. Choosing dimensions that fit the intended use can also help avoid unnecessarily large images. Resizing is different from compression: resizing changes width and height, while compression focuses on reducing file size.</p>
+
+      <h2>Related image tool</h2>
+      <p>Need to reduce an image file size without changing its dimensions? Try the <a href="image-compressor.html">free online Image Compressor</a>.</p>
+      <h2>Image resizing tips</h2>
+      <ul>
+        <li>Keep the aspect ratio enabled when you want to avoid stretching or squashing the image.</li>
+        <li>Use the exact pixel dimensions requested by the website or platform where you plan to use the image.</li>
+        <li>Choose JPG or WebP when a smaller file is important and some quality loss is acceptable.</li>
+        <li>Choose PNG when you need a lossless output format.</li>
+      </ul>
+
+      <h2>Frequently asked questions</h2>
+      <h3>Is this image resizer free?</h3>
+      <p>Yes. ToolNova's image resizer is free to use in your browser.</p>
+      <h3>Which image formats are supported?</h3>
+      <p>You can upload JPG, PNG and WebP images and choose JPG, PNG or WebP for the resized output.</p>
+      <h3>Can I keep the original proportions?</h3>
+      <p>Yes. Keep the aspect ratio option selected. When you change either dimension, the other dimension is adjusted to preserve the original proportions.</p>
+      <h3>Are my images uploaded to a server?</h3>
+      <p>No. The selected image is processed locally in your browser and is not sent to a ToolNova server.</p>
+      <h3>Does resizing also compress an image?</h3>
+      <p>Changing pixel dimensions can change the output file size, but resizing and compression are different operations. Use the Image Compressor page when your main goal is to reduce file size without choosing new dimensions.</p>
+    </article>
+  </main>
+
+  <footer>
+    <a class="brand footer-brand" href="index.html"><span class="brand-mark">T</span><span>Tool<span class="brand-blue">Nova</span></span></a>
+    <span>© <span id="year"></span> ToolNova. Free tools for everyday tasks.</span>
+    <div class="footer-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Contact</a></div>
+  </footer>
+
+  <script>
+    const fileInput = document.getElementById("imageFile");
+    const widthInput = document.getElementById("width");
+    const heightInput = document.getElementById("height");
+    const formatInput = document.getElementById("format");
+    const qualityInput = document.getElementById("quality");
+    const keepRatioInput = document.getElementById("keepRatio");
+    const statusBox = document.getElementById("status");
+    const previewGrid = document.getElementById("previewGrid");
+    const downloadButton = document.getElementById("downloadButton");
+
+    let selectedFile = null;
+    let originalUrl = null;
+    let resizedUrl = null;
+    let resizedBlob = null;
+    let originalWidth = 0;
+    let originalHeight = 0;
+    let outputName = "toolnova-resized";
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function setControlsEnabled(enabled) {
+      [widthInput, heightInput, formatInput, qualityInput, keepRatioInput,
+       document.getElementById("resizeButton")].forEach(control => {
+        control.disabled = !enabled;
+      });
+    }
+
+    function clearOutput() {
+      if (resizedUrl) URL.revokeObjectURL(resizedUrl);
+      resizedUrl = null;
+      resizedBlob = null;
+      previewGrid.classList.add("hidden");
+      downloadButton.classList.add("hidden");
+      document.getElementById("resizedPreview").removeAttribute("src");
+      document.getElementById("resizedInfo").textContent = "";
+    }
+
+    function updateQualityLabel() {
+      document.getElementById("qualityValue").textContent = qualityInput.value + "%";
+    }
+
+    function updateFormatControls() {
+      const isPng = formatInput.value === "image/png";
+      qualityInput.disabled = !selectedFile || isPng;
+      document.getElementById("qualityValue").textContent = isPng ? "Not used for PNG" : qualityInput.value + "%";
+    }
+
+    qualityInput.addEventListener("input", updateQualityLabel);
+    formatInput.addEventListener("change", updateFormatControls);
+
+    widthInput.addEventListener("input", () => {
+      if (!selectedFile || !keepRatioInput.checked || !originalWidth) return;
+      const width = Number(widthInput.value);
+      if (width > 0) heightInput.value = Math.max(1, Math.round(width * originalHeight / originalWidth));
+    });
+
+    heightInput.addEventListener("input", () => {
+      if (!selectedFile || !keepRatioInput.checked || !originalHeight) return;
+      const height = Number(heightInput.value);
+      if (height > 0) widthInput.value = Math.max(1, Math.round(height * originalWidth / originalHeight));
+    });
+
+    fileInput.addEventListener("change", () => {
+      selectedFile = fileInput.files && fileInput.files[0] ? fileInput.files[0] : null;
+      clearOutput();
+      if (originalUrl) URL.revokeObjectURL(originalUrl);
+      originalUrl = null;
+      originalWidth = 0;
+      originalHeight = 0;
+      document.getElementById("originalPreview").removeAttribute("src");
+      document.getElementById("originalInfo").textContent = "";
+      previewGrid.classList.add("hidden");
+
+      if (!selectedFile) {
+        setControlsEnabled(false);
+        statusBox.textContent = "Select an image to get started.";
+        return;
+      }
+
+      if (!["image/jpeg", "image/png", "image/webp"].includes(selectedFile.type)) {
+        selectedFile = null;
+        fileInput.value = "";
+        setControlsEnabled(false);
+        statusBox.textContent = "Please choose a JPG, PNG or WebP image.";
+        return;
+      }
+
+      if (originalUrl) URL.revokeObjectURL(originalUrl);
+      originalUrl = URL.createObjectURL(selectedFile);
+
+      const image = new Image();
+      image.onload = () => {
+        originalWidth = image.naturalWidth;
+        originalHeight = image.naturalHeight;
+        widthInput.value = originalWidth;
+        heightInput.value = originalHeight;
+        document.getElementById("originalPreview").src = originalUrl;
+        document.getElementById("originalInfo").textContent =
+          originalWidth + " × " + originalHeight + " px · " +
+          formatBytes(selectedFile.size) + " · " + selectedFile.name;
+        previewGrid.classList.remove("hidden");
+        setControlsEnabled(true);
+        updateFormatControls();
+        statusBox.textContent = "Image selected. Enter your desired dimensions and select Resize image.";
+      };
+      image.onerror = () => {
+        selectedFile = null;
+        fileInput.value = "";
+        if (originalUrl) URL.revokeObjectURL(originalUrl);
+        originalUrl = null;
+        document.getElementById("originalPreview").removeAttribute("src");
+        document.getElementById("originalInfo").textContent = "";
+        previewGrid.classList.add("hidden");
+        setControlsEnabled(false);
+        statusBox.textContent = "This image could not be opened. Please choose another file.";
+      };
+      image.src = originalUrl;
+    });
+
+    document.getElementById("resizeButton").addEventListener("click", () => {
+      if (!selectedFile) {
+        statusBox.textContent = "Please choose an image first.";
+        return;
+      }
+
+      const targetWidth = Number(widthInput.value);
+      const targetHeight = Number(heightInput.value);
+
+      if (!Number.isInteger(targetWidth) || !Number.isInteger(targetHeight) ||
+          targetWidth < 1 || targetHeight < 1 ||
+          targetWidth > 8192 || targetHeight > 8192 ||
+          targetWidth * targetHeight > 40000000) {
+        statusBox.textContent = "Enter dimensions up to 8,192 pixels per side, with no more than 40 million total pixels.";
+        return;
+      }
+
+      const canvas = document.createElement("canvas");
+      canvas.width = targetWidth;
+      canvas.height = targetHeight;
+      const context = canvas.getContext("2d");
+
+      if (!context) {
+        statusBox.textContent = "Your browser could not process this image.";
+        return;
+      }
+
+      context.imageSmoothingEnabled = true;
+      context.imageSmoothingQuality = "high";
+      if (formatInput.value === "image/jpeg") {
+        context.fillStyle = "#ffffff";
+        context.fillRect(0, 0, targetWidth, targetHeight);
+      }
+
+      const image = new Image();
+      image.onload = () => {
+        context.drawImage(image, 0, 0, targetWidth, targetHeight);
+        const type = formatInput.value;
+        const quality = Number(qualityInput.value) / 100;
+
+        canvas.toBlob(blob => {
+          if (!blob) {
+            statusBox.textContent = "Could not create the resized image. Please try another format or smaller dimensions.";
+            return;
+          }
+
+          if (resizedUrl) URL.revokeObjectURL(resizedUrl);
+          resizedBlob = blob;
+          resizedUrl = URL.createObjectURL(blob);
+
+          const extension = {
+            "image/jpeg": "jpg",
+            "image/png": "png",
+            "image/webp": "webp"
+          }[type];
+
+          outputName = "toolnova-resized-" + targetWidth + "x" + targetHeight + "." + extension;
+          document.getElementById("resizedPreview").src = resizedUrl;
+          document.getElementById("resizedInfo").textContent =
+            targetWidth + " × " + targetHeight + " px · " + formatBytes(blob.size);
+
+          previewGrid.classList.remove("hidden");
+          downloadButton.classList.remove("hidden");
+          statusBox.textContent = "Resizing complete. Preview the result, then download your image.";
+        }, type, type === "image/png" ? undefined : quality);
+      };
+
+      image.onerror = () => {
+        statusBox.textContent = "This image could not be resized. Please try another file.";
+      };
+      image.src = originalUrl;
+    });
+
+    downloadButton.addEventListener("click", () => {
+      if (!resizedBlob) return;
+      const url = URL.createObjectURL(resizedBlob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = outputName;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    });
+
+    function formatBytes(bytes) {
+      if (bytes < 1024) return bytes + " B";
+      if (bytes < 1048576) return (bytes / 1024).toFixed(1) + " KB";
+      return (bytes / 1048576).toFixed(2) + " MB";
+    }
+
+    window.addEventListener("beforeunload", () => {
+      if (originalUrl) URL.revokeObjectURL(originalUrl);
+      if (resizedUrl) URL.revokeObjectURL(resizedUrl);
+    });
+  </script>
+</body>
+</html>
