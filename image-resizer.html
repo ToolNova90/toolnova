@@ -256,6 +256,11 @@
       image.onerror = () => {
         selectedFile = null;
         fileInput.value = "";
+        if (originalUrl) URL.revokeObjectURL(originalUrl);
+        originalUrl = null;
+        document.getElementById("originalPreview").removeAttribute("src");
+        document.getElementById("originalInfo").textContent = "";
+        previewGrid.classList.add("hidden");
         setControlsEnabled(false);
         statusBox.textContent = "This image could not be opened. Please choose another file.";
       };
