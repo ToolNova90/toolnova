@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Crop JPG, PNG and WebP images online for free. Set a custom crop area, preview the result and download it privately in your browser.">
+  <link rel="canonical" href="https://toolnova-ajl.pages.dev/image-cropper.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Free Image Cropper Online | ToolNova">
+  <meta property="og:description" content="Crop JPG, PNG and WebP images online. Set crop dimensions, preview and download locally.">
+  <meta property="og:url" content="https://toolnova-ajl.pages.dev/image-cropper.html">
+  <meta property="og:site_name" content="ToolNova">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free Image Cropper Online | ToolNova">
+  <meta name="twitter:description" content="Free browser-based image cropping for JPG, PNG and WebP.">
+  <meta name="theme-color" content="#2563eb">
+  <title>Free Image Cropper Online | ToolNova</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "ToolNova Image Cropper",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Any",
+        "url": "https://toolnova-ajl.pages.dev/image-cropper.html",
+        "description": "A free browser-based tool to crop JPG, PNG and WebP images using custom pixel coordinates.",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolnova-ajl.pages.dev/"},
+          {"@type": "ListItem", "position": 2, "name": "Image Cropper", "item": "https://toolnova-ajl.pages.dev/image-cropper.html"}
+        ]
+      }
+    ]
+  }
+  </script>
+  <style>
+    .page-wrap{max-width:900px;margin:0 auto;padding:54px 22px 76px}
+    .breadcrumb{max-width:760px;margin:0 auto 22px;font-size:13px;color:var(--muted)}
+    .breadcrumb a,.page-copy a{color:#2563eb;text-decoration:none}
+    .breadcrumb a:hover,.page-copy a:hover{text-decoration:underline}
+    .page-intro{text-align:center;margin-bottom:30px}
+    .page-intro h1{font-size:clamp(32px,5vw,48px);letter-spacing:-1.8px;margin:12px 0}
+    .page-intro p{max-width:680px;margin:0 auto;color:var(--muted);font-size:15px;line-height:1.7}
+    .crop-panel{max-width:700px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:18px;padding:25px;box-shadow:0 12px 35px #1e3a8a0c}
+    .upload-area{border:2px dashed #bfd0e5;border-radius:13px;background:#f8fbff;padding:30px 18px;text-align:center}
+    .upload-area strong{display:block;margin-bottom:7px}
+    .upload-area p{font-size:12px;color:var(--muted);margin:0 0 14px}
+    .upload-area input{max-width:100%;font:12px "DM Sans"}
+    .crop-controls{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0}
+    .crop-controls label{display:block;font-size:12px;font-weight:700;color:#475569;margin-bottom:7px}
+    .crop-controls input{box-sizing:border-box;width:100%;padding:10px;border:1px solid #dce4ef;border-radius:9px;background:#fff;font:13px "DM Sans"}
+    .preview-card{border:1px solid var(--line);border-radius:12px;padding:12px;margin-top:18px}
+    .preview-card h3{font-size:12px;margin:0 0 9px}
+    .preview-card img{display:block;width:100%;max-height:300px;object-fit:contain;background:#f8fafc;border-radius:8px}
+    .preview-meta,.notice{font-size:11px;color:#64748b;margin-top:9px;line-height:1.6;overflow-wrap:anywhere}
+    .page-copy{max-width:760px;margin:42px auto 0;color:#475569;font-size:14px;line-height:1.8}
+    .page-copy h2{color:var(--ink);font-size:22px;letter-spacing:-.5px;margin:28px 0 8px}
+    .page-copy h3{color:var(--ink);font-size:16px;margin:20px 0 5px}
+    .page-copy ul,.page-copy ol{padding-left:21px}
+    .tool-status-error{color:#b42318}.tool-status-success{color:#167647}
+    .button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    @media(max-width:600px){.page-wrap{padding:40px 16px 55px}.crop-panel{padding:17px}.crop-controls{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="ToolNova home"><span class="brand-mark">T</span><span>Tool<span class="brand-blue">Nova</span></span></a>
+    <nav><a href="index.html#tools">All tools</a><a href="index.html#about">About</a></nav>
+    <a class="header-cta" href="index.html#tools">Explore tools <span>↗</span></a>
+  </header>
+
+  <main class="page-wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a> <span aria-hidden="true">/</span> <span>Image Cropper</span></nav>
+    <section class="page-intro">
+      <div class="eyebrow">FREE ONLINE IMAGE TOOL</div>
+      <h1>Image Cropper</h1>
+      <p>Crop JPG, PNG and WebP images online for free. Enter the crop position and dimensions in pixels, preview the cropped image and download it. Your image is processed locally in your browser.</p>
+    </section>
+
+    <section class="crop-panel" aria-label="Image cropping tool">
+      <div class="upload-area">
+        <strong>Choose an image to crop</strong>
+        <p>Supported formats: JPG, PNG and WebP · Maximum file size: 50 MB</p>
+        <input id="imageFile" type="file" accept="image/jpeg,image/png,image/webp" aria-label="Choose an image">
+      </div>
+
+      <div class="crop-controls">
+        <div><label for="left">Left position (px)</label><input id="left" type="number" min="0" step="1" value="0" disabled></div>
+        <div><label for="top">Top position (px)</label><input id="top" type="number" min="0" step="1" value="0" disabled></div>
+        <div><label for="cropWidth">Crop width (px)</label><input id="cropWidth" type="number" min="1" step="1" placeholder="Width" disabled></div>
+        <div><label for="cropHeight">Crop height (px)</label><input id="cropHeight" type="number" min="1" step="1" placeholder="Height" disabled></div>
+      </div>
+
+      <button class="action-button" id="cropButton" type="button" disabled>Crop image</button>
+      <div id="status" class="notice" role="status" aria-live="polite">Select an image to get started. The crop area is measured in pixels from the image's top-left corner.</div>
+
+      <div class="preview-card hidden" id="originalCard">
+        <h3>Original image</h3>
+        <img id="originalPreview" alt="Preview of the original image">
+        <div class="preview-meta" id="originalInfo"></div>
+      </div>
+      <div class="preview-card hidden" id="resultCard">
+        <h3>Cropped image preview</h3>
+        <img id="croppedPreview" alt="Preview of the cropped image">
+        <div class="preview-meta" id="croppedInfo"></div>
+      </div>
+      <div class="button-row"><button class="secondary-button hidden" id="downloadButton" type="button">Download cropped image</button></div>
+      <p class="notice">Privacy: cropping happens locally in your browser. Your selected image is not uploaded to a ToolNova server. The crop area must fit inside the original image dimensions.</p>
+    </section>
+
+    <article class="page-copy">
+      <h2>How to crop an image online</h2>
+      <ol>
+        <li>Select a JPG, PNG or WebP image from your device.</li>
+        <li>Enter the left and top positions for the crop area in pixels.</li>
+        <li>Enter the crop width and height.</li>
+        <li>Select <strong>Crop image</strong> to preview the result.</li>
+        <li>Select the download button to save the cropped image.</li>
+      </ol>
+
+      <h2>What do the crop position and dimensions mean?</h2>
+      <p>The left position is the number of pixels from the image's left edge. The top position is the number of pixels from its top edge. Crop width and crop height determine the size of the selected area. For example, a left position of 0 and a top position of 0 starts the crop at the image's top-left corner.</p>
+
+      <h2>Why crop an image?</h2>
+      <p>Cropping removes unwanted outer areas of a picture and helps focus attention on the part you want to keep. It can be useful when preparing images for documents, presentations, websites or social posts. Cropping changes the visible area of an image; it does not simply change the image's display size.</p>
+
+      <h2>Related image tools</h2>
+      <ul>
+        <li><a href="image-resizer.html">Image Resizer</a> — change image width and height.</li>
+        <li><a href="image-compressor.html">Image Compressor</a> — reduce image file size.</li>
+      </ul>
+
+      <h2>Frequently asked questions</h2>
+      <h3>Is this image cropper free?</h3>
+      <p>Yes. ToolNova's image cropper is free to use in your browser.</p>
+      <h3>Which image formats can I use?</h3>
+      <p>You can upload JPG, PNG and WebP images. The cropped image is downloaded as a PNG file.</p>
+      <h3>Are my images uploaded to a server?</h3>
+      <p>No. The image is processed locally in your browser and is not sent to a ToolNova server.</p>
+      <h3>What happens if my crop area is outside the image?</h3>
+      <p>The tool checks the crop position and dimensions. If the selected area extends beyond the original image, it asks you to correct the values.</p>
+      <h3>Does cropping resize the whole image?</h3>
+      <p>No. Cropping selects and keeps a rectangular part of the original image. Use the Image Resizer when you want to change the dimensions of the full image.</p>
+    </article>
+  </main>
+
+  <footer>
+    <a class="brand footer-brand" href="index.html"><span class="brand-mark">T</span><span>Tool<span class="brand-blue">Nova</span></span></a>
+    <span>© <span id="year"></span> ToolNova. Free tools for everyday tasks.</span>
+    <div class="footer-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Contact</a></div>
+  </footer>
+
+  <script>
+    "use strict";
+    const fileInput = document.getElementById("imageFile");
+    const leftInput = document.getElementById("left");
+    const topInput = document.getElementById("top");
+    const widthInput = document.getElementById("cropWidth");
+    const heightInput = document.getElementById("cropHeight");
+    const cropButton = document.getElementById("cropButton");
+    const downloadButton = document.getElementById("downloadButton");
+    const statusBox = document.getElementById("status");
+    const MAX_FILE_BYTES = 50 * 1024 * 1024;
+    const MAX_PIXELS = 50000000;
+    let selectedFile = null;
+    let imageElement = null;
+    let originalUrl = null;
+    let croppedUrl = null;
+    let croppedBlob = null;
+    let outputName = "toolnova-cropped.png";
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function setStatus(message, type) {
+      statusBox.textContent = message;
+      statusBox.classList.remove("tool-status-error", "tool-status-success");
+      if (type === "error") statusBox.classList.add("tool-status-error");
+      if (type === "success") statusBox.classList.add("tool-status-success");
+    }
+
+    function formatBytes(bytes) {
+      if (bytes < 1024) return bytes + " B";
+      if (bytes < 1048576) return (bytes / 1024).toFixed(1) + " KB";
+      return (bytes / 1048576).toFixed(2) + " MB";
+    }
+
+    function clearResult() {
+      if (croppedUrl) URL.revokeObjectURL(croppedUrl);
+      croppedUrl = null;
+      croppedBlob = null;
+      document.getElementById("croppedPreview").removeAttribute("src");
+      document.getElementById("croppedInfo").textContent = "";
+      document.getElementById("resultCard").classList.add("hidden");
+      downloadButton.classList.add("hidden");
+    }
+
+    function setControlsEnabled(enabled) {
+      [leftInput, topInput, widthInput, heightInput, cropButton].forEach(el => el.disabled = !enabled);
+    }
+
+    fileInput.addEventListener("change", () => {
+      clearResult();
+      selectedFile = fileInput.files && fileInput.files[0] ? fileInput.files[0] : null;
+      imageElement = null;
+
+      if (originalUrl) URL.revokeObjectURL(originalUrl);
+      originalUrl = null;
+      document.getElementById("originalPreview").removeAttribute("src");
+      document.getElementById("originalInfo").textContent = "";
+      document.getElementById("originalCard").classList.add("hidden");
+
+      if (!selectedFile) {
+        setControlsEnabled(false);
+        setStatus("Select an image to get started.");
+        return;
+      }
+
+      if (!["image/jpeg", "image/png", "image/webp"].includes(selectedFile.type)) {
+        selectedFile = null;
+        fileInput.value = "";
+        setControlsEnabled(false);
+        setStatus("Please choose a JPG, PNG or WebP image.", "error");
+        return;
+      }
+
+      if (selectedFile.size > MAX_FILE_BYTES) {
+        selectedFile = null;
+        fileInput.value = "";
+        setControlsEnabled(false);
+        setStatus("This image is larger than 50 MB. Please choose a smaller file.", "error");
+        return;
+      }
+
+      originalUrl = URL.createObjectURL(selectedFile);
+      const img = new Image();
+      img.onload = () => {
+        const w = img.naturalWidth;
+        const h = img.naturalHeight;
+        if (!w || !h || w * h > MAX_PIXELS) {
+          URL.revokeObjectURL(originalUrl);
+          originalUrl = null;
+          selectedFile = null;
+          fileInput.value = "";
+          setControlsEnabled(false);
+          setStatus("This image is too large to process safely in your browser. Please choose an image with 50 megapixels or fewer.", "error");
+          return;
+        }
+        imageElement = img;
+        document.getElementById("originalPreview").src = originalUrl;
+        document.getElementById("originalInfo").textContent = `${w} × ${h} px · ${formatBytes(selectedFile.size)} · ${selectedFile.name}`;
+        document.getElementById("originalCard").classList.remove("hidden");
+        leftInput.value = 0;
+        topInput.value = 0;
+        widthInput.value = w;
+        heightInput.value = h;
+        setControlsEnabled(true);
+        setStatus(`Image ready: ${w} × ${h} pixels. Set your crop area and select Crop image.`);
+      };
+      img.onerror = () => {
+        if (originalUrl) URL.revokeObjectURL(originalUrl);
+        originalUrl = null;
+        selectedFile = null;
+        fileInput.value = "";
+        setControlsEnabled(false);
+        setStatus("This image could not be opened. Please choose another file.", "error");
+      };
+      img.src = originalUrl;
+    });
+
+    [leftInput, topInput, widthInput, heightInput].forEach(input => input.addEventListener("input", clearResult));
+
+    cropButton.addEventListener("click", () => {
+      if (!imageElement || !selectedFile) {
+        setStatus("Please choose an image first.", "error");
+        return;
+      }
+      const x = Number(leftInput.value);
+      const y = Number(topInput.value);
+      const w = Number(widthInput.value);
+      const h = Number(heightInput.value);
+      const imageW = imageElement.naturalWidth;
+      const imageH = imageElement.naturalHeight;
+
+      if (![x, y, w, h].every(Number.isInteger) || x < 0 || y < 0 || w < 1 || h < 1 ||
+          x + w > imageW || y + h > imageH || w * h > MAX_PIXELS) {
+        setStatus(`Enter a valid crop area inside the original image (${imageW} × ${imageH} px).`, "error");
+        return;
+      }
+
+      const canvas = document.createElement("canvas");
+      canvas.width = w;
+      canvas.height = h;
+      const context = canvas.getContext("2d");
+      if (!context) {
+        setStatus("Your browser could not process this image.", "error");
+        return;
+      }
+      context.drawImage(imageElement, x, y, w, h, 0, 0, w, h);
+      cropButton.disabled = true;
+      cropButton.textContent = "Cropping...";
+
+      canvas.toBlob(blob => {
+        cropButton.disabled = false;
+        cropButton.textContent = "Crop image";
+        if (!blob) {
+          setStatus("Could not create the cropped image. Please try again.", "error");
+          return;
+        }
+        clearResult();
+        croppedBlob = blob;
+        croppedUrl = URL.createObjectURL(blob);
+        outputName = "toolnova-cropped-" + w + "x" + h + ".png";
+        document.getElementById("croppedPreview").src = croppedUrl;
+        document.getElementById("croppedInfo").textContent = `${w} × ${h} px · ${formatBytes(blob.size)}`;
+        document.getElementById("resultCard").classList.remove("hidden");
+        downloadButton.classList.remove("hidden");
+        setStatus("Cropping complete. Preview the result, then download your image.", "success");
+      }, "image/png");
+    });
+
+    downloadButton.addEventListener("click", () => {
+      if (!croppedBlob) return;
+      const url = URL.createObjectURL(croppedBlob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = outputName;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    });
+
+    window.addEventListener("beforeunload", () => {
+      if (originalUrl) URL.revokeObjectURL(originalUrl);
+      if (croppedUrl) URL.revokeObjectURL(croppedUrl);
+    });
+  </script>
+</body>
+</html>
